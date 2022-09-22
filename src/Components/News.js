@@ -23,7 +23,7 @@ export class News extends Component {
       title:
         "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
       description:
-        "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+        "Wides, lbw cal  ls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
       url: "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
       urlToImage:
         "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
@@ -41,17 +41,38 @@ export class News extends Component {
       loading: false,
     };
   }
+
+  async componentDidMount() {
+    console.log("component did mount ");
+    let url =
+      "https://newsapi.org/v2/top-headlines?country=us&apiKey=caa21893e6794c11b48862f2980d9028";
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData.articles);
+    this.setState({ articles: parsedData.articles });
+  }
+
   render() {
+    console.log("render ");
     return (
       <div className='container my-3'>
         <h1>News - Top Headlines</h1>
-        <NewsItem
-          title='title props'
-          description='desc props'
-          image_url='https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg'
-          news_url="Todo"
-        />
-        
+        <div className='row'>
+          {this.state.articles.map((element) => {
+            return (
+              <div className='col-md-4' key={element.url}>
+                <NewsItem
+                  title={element.title ? element.title.slice(0, 45) : ""}
+                  description={
+                    element.description ? element.description.slice(0, 88) : ""
+                  }
+                  image_url={element.urlToImage}
+                  news_url={element.url}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
