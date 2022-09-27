@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 
 export class News extends Component {
-  articles = [];
-
   constructor() {
     super();
     console.log("news component constructor");
     this.state = {
-      articles: this.articles,
+      articles: [],
       loading: false,
     };
   }
@@ -31,12 +29,10 @@ export class News extends Component {
         <div className='row'>
           {this.state.articles.map((element) => {
             return (
-              <div className='col-md-4' key={element.url}>
+              <div className='col-lg-4 col-md-5' key={element.url}>
                 <NewsItem
-                  title={element.title ? element.title.slice(0, 45) : ""}
-                  description={
-                    element.description ? element.description.slice(0, 88) : ""
-                  }
+                  title={element.title ? element.title : ""}
+                  description={element.description ? element.description : ""}
                   image_url={element.urlToImage}
                   news_url={element.url}
                 />
