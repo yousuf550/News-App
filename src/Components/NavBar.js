@@ -14,10 +14,14 @@ export class NavBar extends Component {
           <li className="nav-item">
             <a className="nav-link active text-white" aria-current="page" href="/">Home</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link text-white" href="/">About</a>
-          </li>
-          
+          <li className="nav-item"><a className="nav-link text-white" href="/">About</a>  </li>   
+           <li className="nav-item"><a className="nav-link text-white" href="/">business</a></li>
+           <li className="nav-item"><a className="nav-link text-white" href="/">entertainment</a></li>
+          <li className="nav-item"><a className="nav-link text-white" href="/"> general</a></li>
+          <li className="nav-item"><a className="nav-link text-white" href="/"> health</a></li>
+          <li className="nav-item"><a className="nav-link text-white" href="/"> science</a></li>
+           <li className="nav-item"><a className="nav-link text-white" href="/">sports</a></li>
+          <li className="nav-item"><a className="nav-link text-white" href="/"> technology</a></li>
         </ul>
       
       </div>
