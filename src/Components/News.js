@@ -26,9 +26,9 @@ class News extends Component {
   }
 
   async componentDidMount() {
+    this.setState({ loading: true });
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=caa21893e6794c11b48862f2980d9028&page=1&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
-    this.setState({ loading: true });
     let parsedData = await data.json();
     console.log("API URL", url, parsedData.articles);
     this.setState({
@@ -83,7 +83,9 @@ class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h1 className='text-center' style={{margin:"25px"}}>News - Top Headlines</h1>
+        <h1 className='text-center' style={{ margin: "25px" }}>
+          News - Top Headlines
+        </h1>
         <hr />
         {this.state.loading && <Spinner />}
 
@@ -97,6 +99,8 @@ class News extends Component {
                     description={element.description ? element.description : ""}
                     image_url={element.urlToImage}
                     news_url={element.url}
+                    date={element.publishedAt}
+                    author={element.author}
                   />
                 </div>
               );
