@@ -16,13 +16,18 @@ class News extends Component {
     category: PropTypes.string,
   };
 
+  capatilzeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       articles: [],
       loading: false,
       page: 1,
     };
+    document.title = `${this.capatilzeFirstLetter(this.props.category)} - News`;
   }
 
   async updateNews() {
@@ -60,7 +65,7 @@ class News extends Component {
     return (
       <div className='container my-3'>
         <h1 className='text-center' style={{ margin: "25px" }}>
-          News - Top Headlines
+           Top News Headlines - {this.capatilzeFirstLetter(this.props.category)} Category
         </h1>
         <hr />
         {this.state.loading && <Spinner />}
