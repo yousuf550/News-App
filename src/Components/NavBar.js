@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const NavBar = () =>{
     return (
-    <nav className="navbar navbar-dark navbar-expand-lg " style={{backgroundColor:"#051937"}}>
+    <nav className="navbar fixed-top navbar-dark navbar-expand-lg " style={{backgroundColor:"#051937"}}>
     <div className="container-fluid">
       <Link className="navbar-brand text-white" to="/">News App</Link>
       <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

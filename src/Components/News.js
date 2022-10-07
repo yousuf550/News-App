@@ -34,15 +34,16 @@ const News = (props) => {
 
   useEffect(() => {
     updateNews();
+    // eslint-disable-next-line
   }, []);
 
   const fetchMoreData = async () => {
-    setPage(page + 1);
     const url = `https://newsapi.org/v2/top-headlines?country=${
       props.country
     }&category=${props.category}&apiKey=${props.apiKey}&page=${
       page + 1
     }&pageSize=${props.pageSize}`;
+    setPage(page + 1);
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log("API Data", parsedData);
@@ -67,7 +68,7 @@ const News = (props) => {
 
   return (
     <>
-      <h1 className='text-center' style={{ margin: "25px" }}>
+      <h1 className='text-center' style={{ margin: "25px", marginTop: "80px" }}>
         Top News Headlines - {capatilzeFirstLetter(props.category)} Category
       </h1>
       <hr />
